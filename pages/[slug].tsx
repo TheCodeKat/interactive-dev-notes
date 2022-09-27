@@ -8,7 +8,6 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 
 const NOTES_PATH = join(process.cwd(), process.env.notesMarkdownPath ?? "");
-const DIAGRAMS_PATH = join(process.cwd(), process.env.diagramsComponentsPath ?? "");
 
 export interface InteractiveNoteProps extends ParsedUrlQuery {
   frontMatter: any;
@@ -39,8 +38,6 @@ export const getStaticProps: GetStaticProps<InteractiveNoteProps> = async ({
 
   const renderHTML = await renderMarkdown(notesMarkdownContent.content);
 
-  
-
   return {
     props: {
       frontMatter: notesMarkdownContent.frontMatter,
@@ -49,25 +46,23 @@ export const getStaticProps: GetStaticProps<InteractiveNoteProps> = async ({
   };
 };
 
-// get the SVG Diagram Component
-/*const Diagram = dynamic(() => import('../components/header'), {
-  suspense: true,
-})*/
-
-const getDiagramComponent = (diagramName: string) => dynamic(() => import(`../diagrams/${diagramName}`), {
-  suspense: true
-});
+// Esta función devolverá un componente que contiene un diagrama SVG interactivo,
+// de acuerdo a la ruta, o nombre del diagrama, que se proporcione
+const getDiagramComponent = (diagramName: string) =>
+  dynamic(() => import(`../diagrams/${diagramName}`), {
+    suspense: true,
+  });
 
 export function InteractiveNote({ frontMatter, html }) {
   const router = useRouter();
 
-  const Diagram = getDiagramComponent(router.asPath.slice(1))
+  // Queremos mostrar el diagrama que corresponde con la ruta a la que accedió el usuario
+  const Diagram = getDiagramComponent(router.asPath.slice(1));
 
   return (
     <>
-    <span>{router.asPath}</span>
       <div>
-        <Diagram/>
+        <Diagram />
       </div>
       <div>
         <MDXRemote {...html} />
