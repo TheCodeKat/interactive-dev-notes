@@ -7,6 +7,7 @@ import { MDXRemote } from "next-mdx-remote";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import TopicTag from "../components/TopicTag";
 
 const NOTES_PATH = join(process.cwd(), process.env.notesMarkdownPath ?? "");
 
@@ -71,6 +72,9 @@ export function InteractiveNote({ frontMatter, html }) {
       </div>
       <div className="w-6/12">
         <MDXRemote {...html} />
+        {
+          frontMatter.topics.map((topic, i) => <TopicTag topicName={topic} key={i}/>)
+        }
       </div>
     </div>
     </>
