@@ -6,6 +6,7 @@ import { getParsedFileContentBySlug, renderMarkdown } from "../lib/Markdown";
 import { MDXRemote } from "next-mdx-remote";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const NOTES_PATH = join(process.cwd(), process.env.notesMarkdownPath ?? "");
 
@@ -60,6 +61,10 @@ export function InteractiveNote({ frontMatter, html }) {
   const Diagram = getDiagramComponent(router.asPath.slice(1));
 
   return (
+    <>
+    <Head>
+      <title>{frontMatter.title}</title>
+    </Head>
     <div className="flex">
       <div className="w-6/12">
         <Diagram />
@@ -68,6 +73,8 @@ export function InteractiveNote({ frontMatter, html }) {
         <MDXRemote {...html} />
       </div>
     </div>
+    </>
+    
   );
 }
 
