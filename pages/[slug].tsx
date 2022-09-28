@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps<InteractiveNoteProps> = async ({
 // de acuerdo a la ruta, o nombre del diagrama, que se proporcione
 const getDiagramComponent = (diagramName: string) =>
   dynamic(() => import(`../diagrams/${diagramName}`), {
-    suspense: true,
+    ssr: false,
   });
 
 export function InteractiveNote({ frontMatter, html }) {
