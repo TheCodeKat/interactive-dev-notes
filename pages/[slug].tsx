@@ -72,6 +72,7 @@ export function InteractiveNote({ frontMatter, html }) {
       </div>
       <div className="w-6/12">
         <MDXRemote {...html} />
+        <h1>{frontMatter.title}</h1>
         {
           frontMatter.topics.map((topic, i) => <TopicTag topicName={topic} key={i}/>)
         }
