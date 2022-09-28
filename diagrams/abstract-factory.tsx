@@ -7,8 +7,10 @@ export default function AbstractFactory() {
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
+            // El width y el height definen el view port del SVG
             width="100%"
             height="100%"
+            // El view box define el "aumento" en el SVG
             viewBox="0 0 700 750"
           >
             <defs>
