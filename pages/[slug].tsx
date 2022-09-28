@@ -60,14 +60,14 @@ export function InteractiveNote({ frontMatter, html }) {
   const Diagram = getDiagramComponent(router.asPath.slice(1));
 
   return (
-    <>
-      <div>
+    <div className="flex">
+      <div className="w-6/12">
         <Diagram />
       </div>
-      <div>
+      <div className="w-6/12">
         <MDXRemote {...html} />
       </div>
-    </>
+    </div>
   );
 }
 
