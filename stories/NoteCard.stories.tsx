@@ -5,4 +5,11 @@ export default {
     component: NoteCard
 }
 
-export const Primary = () => <NoteCard/>
+const Template = (args) => <NoteCard {...args}/>
+
+export const Primary = Template.bind({});
+Primary.args = {
+    noteFrontMatter: {
+        title: 'Abstract Factory'
+    }
+}
