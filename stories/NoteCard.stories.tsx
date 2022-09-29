@@ -10,6 +10,7 @@ const Template = (args) => <NoteCard {...args}/>
 export const Primary = Template.bind({});
 Primary.args = {
     noteFrontMatter: {
-        title: 'Abstract Factory'
+        title: 'Abstract Factory',
+        cover: '/images/covers/abstract-factory.jpg'
     }
 }
