@@ -37,6 +37,7 @@ export const Home: NextPage = ({ allNotesData }) => {
           {allNotesData.map(({ id, creationDate, title, cover }) => (
             <NoteCard
               noteFrontMatter={{ title, creationDate, cover }}
+              noteId={id}
               key={id}
             />
           ))}
