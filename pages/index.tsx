@@ -1,9 +1,20 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import type { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import NoteCard from "../components/NoteCard";
+import { getSortedNotesData } from "../lib/Notes";
+import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
+export async function getStaticProps(): GetStaticProps {
+  const allNotesData = getSortedNotesData();
+  return {
+    props: {
+      allNotesData,
+    },
+  };
+}
+
+export const Home: NextPage = ({ allNotesData }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,14 +24,14 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-       
+        {allNotesData.map(({ id, creationDate, title, cover }) => (
+          <NoteCard key={id} noteFrontMatter={{ title, creationDate, cover }} />
+        ))}
       </main>
 
-      <footer className={styles.footer}>
-       
-      </footer>
+      <footer className={styles.footer}></footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

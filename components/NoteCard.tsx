@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function NoteCard({ noteFrontMatter }) {
   return (
-    <div className="p-2 drop-shadow-lg bg-red-50 rounded-lg flex flex-col items-center justify-center shadow-red-400/50">
+    <div className="p-2 drop-shadow-lg bg-red-50 rounded-lg flex flex-col items-center justify-center shadow-red-400/50 m-2 h-full">
       {noteFrontMatter.cover && (
         <div className="mb-2">
           <Image
