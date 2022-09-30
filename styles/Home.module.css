@@ -34,7 +34,7 @@
 }
 
 .notesGrid_column {
-  padding-left: 20px; /* gutter size */
+  padding-left: 40px; /* gutter size */
   background-clip: padding-box;
 }
 .notesGrid_column > div {
