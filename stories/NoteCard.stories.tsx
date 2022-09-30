@@ -14,3 +14,11 @@ Primary.args = {
         cover: '/images/covers/abstract-factory.jpg'
     }
 }
+
+export const NoCover = Template.bind({});
+NoCover.args = {
+    noteFrontMatter: {
+        title: 'Abstract Factory',
+    }
+}
+
