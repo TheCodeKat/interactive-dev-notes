@@ -1,9 +1,14 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Masonry from "react-masonry-css";
 import NoteCard from "../components/NoteCard";
 import { getSortedNotesData } from "../lib/Notes";
 import styles from "../styles/Home.module.css";
+
+const breakpointColumns = {
+  default: 4,
+};
 
 export async function getStaticProps(): GetStaticProps {
   const allNotesData = getSortedNotesData();
@@ -24,9 +29,18 @@ export const Home: NextPage = ({ allNotesData }) => {
       </Head>
 
       <main className={styles.main}>
-        {allNotesData.map(({ id, creationDate, title, cover }) => (
-          <NoteCard key={id} noteFrontMatter={{ title, creationDate, cover }} />
-        ))}
+        <Masonry
+          breakpointCols={breakpointColumns}
+          className={styles.notesGrid}
+          columnClassName={styles["notesGrid_column"]}
+        >
+          {allNotesData.map(({ id, creationDate, title, cover }) => (
+            <NoteCard
+              noteFrontMatter={{ title, creationDate, cover }}
+              key={id}
+            />
+          ))}
+        </Masonry>
       </main>
 
       <footer className={styles.footer}></footer>

@@ -25,6 +25,23 @@
   flex-grow: 1;
 }
 
+.notesGrid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -20px; /* gutter size offset */
+  width: 100%;
+}
+
+.notesGrid_column {
+  padding-left: 20px; /* gutter size */
+  background-clip: padding-box;
+}
+.notesGrid_column > div {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .title a {
   color: #0070f3;
   text-decoration: none;
