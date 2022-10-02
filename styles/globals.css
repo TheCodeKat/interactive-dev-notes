@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Choco Chici';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: local('ChocoChici'), url(/fonts/ChocoChici.ttf) format('truetype');
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
