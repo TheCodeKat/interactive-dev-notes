@@ -13,6 +13,8 @@ module.exports = {
         current: 'currentColor',
         'white': '#ffffff',
         'rosewhite': '#fffdfd',
+        'froly': '#ef7c7a',
+        'fair-pink': '#FFEFEB',
         'midnight': '#121063',
         'metal': '#565584',
         'tahiti': '#3ab7bf',
