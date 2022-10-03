@@ -7,7 +7,7 @@ const NOTES_PATH = join(process.cwd(), process.env.notesMarkdownPath ?? "");
 export function getSortedNotesData() {
   // Leemos los nombres de todos los archivos dentro de /notes
   const fileNames = fs.readdirSync(NOTES_PATH);
-  const allPostsData = fileNames.map((fileName) => {
+  const allPostsData: any[] = fileNames.map((fileName) => {
     // Le quitamos la extensión al archivo .mdx para obtener el id
     const id = fileName.replace(/\.mdx$/, "");
 
