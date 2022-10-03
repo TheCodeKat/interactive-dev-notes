@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function NoteCard({ noteFrontMatter, noteId }) {
   return (
     <Link href={noteId}>
-      <div className="p-2 shadow-md hover:scale-105 duration-300 ease-in-out hover:cursor-pointer hover:shadow-lg hover:shadow-red-500/50 bg-red-50 rounded-lg flex flex-col items-center justify-center shadow-red-400/50 m-2 h-40 w-40">
+      <div className="p-2 shadow-md hover:scale-105 duration-300 ease-in-out hover:cursor-pointer hover:shadow-lg hover:shadow-froly/50 bg-fair-pink/25 rounded-lg flex flex-col items-center justify-center shadow-froly/50 m-2 h-40 w-40">
         {noteFrontMatter.cover && (
           <div className="mb-2">
             <Image

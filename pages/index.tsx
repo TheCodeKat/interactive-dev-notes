@@ -10,16 +10,20 @@ const breakpointColumns = {
   default: 4,
 };
 
-export async function getStaticProps(): GetStaticProps {
+export interface HomeProps {
+  allNotesData: any[];
+}
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const allNotesData = getSortedNotesData();
   return {
     props: {
       allNotesData,
     },
   };
-}
+};
 
-export const Home: NextPage = ({ allNotesData }) => {
+export const Home: NextPage<HomeProps> = ({ allNotesData }: HomeProps) => {
   return (
     <div className={styles.container}>
       <Head>

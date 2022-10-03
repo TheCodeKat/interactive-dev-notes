@@ -11,30 +11,32 @@ import TopicTag from "../components/TopicTag";
 
 const NOTES_PATH = join(process.cwd(), process.env.notesMarkdownPath ?? "");
 
-export interface InteractiveNoteProps extends ParsedUrlQuery {
+export interface InteractiveNoteProps {
   frontMatter: any;
   html: any;
 }
 
-export const getStaticPaths: GetStaticPaths<
-  InteractiveNoteProps
-> = async () => {
-  const paths = readdirSync(NOTES_PATH)
-    .map((path) => path.replace(/\.mdx?$/, ""))
-    .map((slug) => ({ params: { slug } }));
-  return {
-    paths,
-    fallback: false,
-  };
-};
+export interface InteractiveNoteParams extends ParsedUrlQuery {
+  slug: string;
+}
 
-export const getStaticProps: GetStaticProps<InteractiveNoteProps> = async ({
-  params,
-}: {
-  params: InteractiveNoteProps;
-}) => {
+export const getStaticPaths: GetStaticPaths<InteractiveNoteParams> =
+  async () => {
+    const paths = readdirSync(NOTES_PATH)
+      .map((path) => path.replace(/\.mdx?$/, ""))
+      .map((slug) => ({ params: { slug } }));
+    return {
+      paths,
+      fallback: false,
+    };
+  };
+
+export const getStaticProps: GetStaticProps<
+  InteractiveNoteProps,
+  InteractiveNoteParams
+> = async ({ params }) => {
   const notesMarkdownContent = getParsedFileContentBySlug(
-    params.slug,
+    params?.slug?.toString() ?? "",
     NOTES_PATH
   );
 
@@ -55,7 +57,7 @@ const getDiagramComponent = (diagramName: string) =>
     ssr: false,
   });
 
-export function InteractiveNote({ frontMatter, html }) {
+export function InteractiveNote({ frontMatter, html }: InteractiveNoteProps) {
   const router = useRouter();
 
   // Queremos mostrar el diagrama que corresponde con la ruta a la que accedió el usuario
@@ -63,23 +65,22 @@ export function InteractiveNote({ frontMatter, html }) {
 
   return (
     <>
-    <Head>
-      <title>{frontMatter.title}</title>
-    </Head>
-    <div className="flex">
-      <div className="w-6/12">
-        <Diagram />
+      <Head>
+        <title>{frontMatter.title}</title>
+      </Head>
+      <div className="flex">
+        <div className="w-6/12">
+          <Diagram />
+        </div>
+        <div className="w-6/12">
+          <MDXRemote {...html} />
+          <h1>{frontMatter.title}</h1>
+          {frontMatter.topics.map((topic: string, i: any) => (
+            <TopicTag topicName={topic} key={i} />
+          ))}
+        </div>
       </div>
-      <div className="w-6/12">
-        <MDXRemote {...html} />
-        <h1>{frontMatter.title}</h1>
-        {
-          frontMatter.topics.map((topic, i) => <TopicTag topicName={topic} key={i}/>)
-        }
-      </div>
-    </div>
     </>
-    
   );
 }
 
