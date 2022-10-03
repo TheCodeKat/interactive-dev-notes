@@ -1,24 +1,24 @@
-import NoteCard from "../components/NoteCard";
+import { Meta, Story } from "@storybook/react";
+import NoteCard, { NoteCardProps } from "../components/NoteCard";
 
 export default {
-    title: 'NoteCard',
-    component: NoteCard
-}
+  title: "NoteCard",
+  component: NoteCard,
+} as Meta;
 
-const Template = (args) => <NoteCard {...args}/>
+const Template: Story<NoteCardProps> = (args: any) => <NoteCard {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    noteFrontMatter: {
-        title: 'Abstract Factory',
-        cover: '/images/covers/abstract-factory.jpg'
-    }
-}
+  noteFrontMatter: {
+    title: "Abstract Factory",
+    cover: "/images/covers/abstract-factory.jpg",
+  },
+};
 
 export const NoCover = Template.bind({});
 NoCover.args = {
-    noteFrontMatter: {
-        title: 'Abstract Factory',
-    }
-}
-
+  noteFrontMatter: {
+    title: "Abstract Factory",
+  },
+};
