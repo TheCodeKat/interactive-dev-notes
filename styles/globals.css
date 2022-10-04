@@ -9,6 +9,20 @@
   font-display: swap;
   src: local('ChocoChici'), url(/fonts/ChocoChici.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('SourceCodePro-Bold'), url(/fonts/SourceCodePro-Bold.otf) format('opentype');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('SourceCodePro-Black'), url(/fonts/SourceCodePro-Black.otf) format('opentype');
+}
 
 @media (prefers-color-scheme: dark) {
   html {

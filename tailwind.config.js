@@ -15,15 +15,11 @@ module.exports = {
         'rosewhite': '#fffdfd',
         'froly': '#ef7c7a',
         'fair-pink': '#FFEFEB',
-        'midnight': '#121063',
-        'metal': '#565584',
-        'tahiti': '#3ab7bf',
-        'silver': '#ecebff',
-        'bubble-gum': '#ff77e9',
-        'bermuda': '#78dcca',
+        'blush': '#FDC4BB',
       },
       fontFamily: {
-        'choco': ['Choco Chici']
+        'choco': ['Choco Chici'],
+        'source-code-pro': ['Source Code Pro'] 
       }
     }
     
