@@ -57,6 +57,12 @@ const getDiagramComponent = (diagramName: string) =>
     ssr: false,
   });
 
+const mdxElements = {
+  ProblemStatement: dynamic(async () => {
+    return await import("../components/ProblemStatement");
+  }),
+};
+
 export function InteractiveNote({ frontMatter, html }: InteractiveNoteProps) {
   const router = useRouter();
 
@@ -77,7 +83,7 @@ export function InteractiveNote({ frontMatter, html }: InteractiveNoteProps) {
           {frontMatter.topics.map((topic: string, i: any) => (
             <TopicTag topicName={topic} key={i} />
           ))}
-          <MDXRemote {...html} />
+          <MDXRemote {...html} components={mdxElements} />
         </div>
       </div>
     </>
