@@ -61,6 +61,8 @@ const mdxElements = {
   ProblemStatement: dynamic(async () => {
     return await import("../components/ProblemStatement");
   }),
+  ul: (props: any) => <ul className="list-disc p-4" {...props} />,
+  ol: (props: any) => <ol className="list-decimal p-4" {...props} />,
 };
 
 export function InteractiveNote({ frontMatter, html }: InteractiveNoteProps) {
