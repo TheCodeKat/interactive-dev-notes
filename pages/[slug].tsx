@@ -74,16 +74,16 @@ export function InteractiveNote({ frontMatter, html }: InteractiveNoteProps) {
       <Head>
         <title>{frontMatter.title}</title>
       </Head>
-      <div className="flex">
-        <div className="w-6/12">
-          <Diagram />
-        </div>
-        <div className="w-6/12 p-4">
+      <div className="flex h-screen">
+        <div className="w-6/12 p-4 overflow-y-scroll">
           <h1>{frontMatter.title}</h1>
           {frontMatter.topics.map((topic: string, i: any) => (
             <TopicTag topicName={topic} key={i} />
           ))}
           <MDXRemote {...html} components={mdxElements} />
+        </div>
+        <div className="w-6/12 overflow-y-scroll">
+          <Diagram />
         </div>
       </div>
     </>
