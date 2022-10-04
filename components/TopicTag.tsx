@@ -3,5 +3,5 @@ export interface TopicTagProps {
 }
 
 export default function TopicTag({ topicName }: TopicTagProps) {
-  return <div>{topicName}</div>;
+  return <div className="p-1 rounded-md bg bg-sky-100 w-fit">{topicName}</div>;
 }
