@@ -11,7 +11,9 @@ Cuando queremos tener diferentes implementaciones de una familia de productos/cl
 
 **Problema: Tenemos un conjunto de productos relacionados que queremos implementar de diferentes maneras, y el programa no conoce qué implementación se usará hasta el tiempo de ejecución.**
 
-La solución a esto es crear un factory que se encargue de decidir qué implementación
+La solución a esto es crear un factory que se encargue de decidir qué implementación/familia de productos instanciar durante el tiempo
+de ejecución, y esconder todas las diferentes implementaciones detrás de una interfaz común. Así el código cliente (nuestro programa)
+no verá niguna diferencia entre cualquier implementación/familia de productos que se le devuelva.
 
 - (Clase) Un _factory abstracto_, que devolverá el factory asociado a la implementación concreta que detecte que debe ser usada.
 - (Clases) Los _factories concretos_, cada uno se encargará de instanciar una familia de productos
