@@ -31,6 +31,7 @@ module.exports = {
         'h2': { fontSize: theme('fontSize.xl') },
         'h3': { fontSize: theme('fontSize.lg'), fontWeight: theme('fontWeight.bold') },
       })
-    })
+    }),
+    require('@tailwindcss/typography')
   ]
 }
