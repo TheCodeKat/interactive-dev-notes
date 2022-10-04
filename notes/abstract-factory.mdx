@@ -2,4 +2,39 @@
 title: "Abstract Factory"
 topics: ["Patrones de Diseño"]
 creationDate: "2022-09-29"
+excerpt: "Usa diferentes implementaciones de un conjunto de componentes relacionados sin que tu programa se entere."
 ---
+
+Cuando queremos tener diferentes implementaciones de una familia de productos/clases/objetos
+
+**Problema: Tenemos un conjunto de productos relacionados que queremos implementar de diferentes maneras, y el programa no conoce qué implementación se usará hasta el tiempo de ejecución.**
+
+La solución a esto es crear un factory que se encargue de decidir qué implementación
+
+- (Clase) Un _factory abstracto_, que devolverá el factory asociado a la implementación concreta que detecte que debe ser usada.
+- (Clases) Los _factories concretos_, cada uno se encargará de instanciar una familia de productos
+- (Interfaz) Un _producto abstracto_, es decir, una interfaz que define la forma o las cualidades que un producto debe tener, sin importar cuál sea su implementación concreta.
+- (Clases) Las diferentes implementaciones concretas de cada producto.
+
+**Ejemplo**
+
+Tenemos una aplicación donde se utilizan varios componentes de UI, incluyendo un
+botón y un checkbox. Esta aplicación, sin embargo, está pensada para correr tanto
+sobre un navegador Web como nativamente en un dispositivo móvil.
+
+Sabemos que un botón de la aplicación se verá prácticamente igual tanto en el navegador como en un móvil.
+
+Sin embargo, hay algunos detalles de implementación que harán que un botón en web sea diferente a un botón en móvil.
+
+Nuestros productos serán 2 componentes de UI: un botón y un checkbox.
+
+Crearemos también 2 factories concretos: uno devolverá la familia de componentes de UI para Web, y el otro devolverá la familia de componentes de UI para Móvil.
+Estos dos factories estarán _escondidos_ detrás de una interfaz en común, que ambos implementan. Así nuestro programa podrá tratarlos a ambos como si se tratara simplemente de la interfaz IUIComponentsFactory, sin saber con qué factory específico está hablando/lidiando/tratando.
+
+Y por último, el factory que se encargará de decidir cuál factory de componentes de UI instanciar, será nuestro Abstract Factory.
+Este Abstract Factory contiene un método (createUIComponentsFactory()) que dice/declara que siempre devolverá un IUIComponentsFactory. Es decir, al programa solo le importa que le devuelvan una instancia de una clase que implemente de IUIComponentsFactory. No le importa recibir una instancia de una clase específica.
+Y así createUIComponentsFactory() contendrá la lógica que le ayudará a decidir qué implementación de IUIComponentsFactory instanciar durante el tiempo de ejecución.
+
+Para nuestro programa, solo está trabajando con IButton y ICheckbox, no sabe con qué implementación concreta, y en realidad, no le afecta en lo más mínimo.
+
+!A las instancias devueltas por un factory method, se les suelen llamar productos.
