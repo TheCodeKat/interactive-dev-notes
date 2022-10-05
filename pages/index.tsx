@@ -40,13 +40,30 @@ export const Home: NextPage<HomeProps> = ({ allNotesData }: HomeProps) => {
           className={styles.notesGrid}
           columnClassName={styles["notesGrid_column"]}
         >
-          {allNotesData.map(({ id, creationDate, title, cover, topics }) => (
-            <NoteCard
-              noteFrontMatter={{ title, creationDate, cover, topics }}
-              noteId={id}
-              key={id}
-            />
-          ))}
+          {allNotesData.map(
+            ({
+              id,
+              creationDate,
+              title,
+              cover,
+              topics,
+              knowledgeStage,
+              updateDate,
+            }) => (
+              <NoteCard
+                noteFrontMatter={{
+                  title,
+                  creationDate,
+                  updateDate,
+                  cover,
+                  topics,
+                  knowledgeStage,
+                }}
+                noteId={id}
+                key={id}
+              />
+            )
+          )}
         </Masonry>
       </main>
 
